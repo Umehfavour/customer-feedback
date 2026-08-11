@@ -3,196 +3,304 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Dashboard · FeedbackPro</title>
+<title>Sign in · FeedbackPro</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<div class="app">
+<div class="auth-page">
 
-  <div class="sidebar-backdrop"></div>
-
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar-brand">
+  <!-- Left: brand / pitch panel -->
+  <aside class="auth-side">
+    <div class="auth-brand">
       <div class="brand-mark">FP</div>
       <div>
-        <div class="brand-text-name">FeedbackPro</div>
-        <div class="brand-text-sub">SaaS Platform</div>
+        <div class="brand-text-name" style="color:#fff;">FeedbackPro</div>
+        <div class="brand-text-sub" style="color:rgba(255,255,255,0.55);">Free Feedback Platform</div>
       </div>
     </div>
 
-    <nav class="sidebar-nav">
-      <a class="nav-link active" href="index.html">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
-        Dashboard
-      </a>
-      <a class="nav-link" href="surveys.html">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-        Surveys
-      </a>
-      <a class="nav-link" href="feedback.html">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.38 8.38 0 0 1 3 11.5 8.5 8.5 0 0 1 11.5 3 8.38 8.38 0 0 1 21 11.5Z"/></svg>
-        Feedback
-      </a>
-      <a class="nav-link" href="#">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        Customers
-      </a>
-      <a class="nav-link" href="settings.html">
-        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
-        Settings
-      </a>
-    </nav>
+    <div class="auth-pitch">
+      <h2>Understand what your customers actually think.</h2>
+      <p>Create surveys, collect feedback, and track satisfaction — free, with no plans or paywalls.</p>
+    </div>
 
-    <div class="sidebar-upgrade">
-      <button class="btn-upgrade">Upgrade Plan</button>
+    <div class="auth-stats">
+      <div><strong>1,240+</strong><span>Feedback responses</span></div>
+      <div><strong>4.5</strong><span>Average rating</span></div>
+      <div><strong>312</strong><span>Active customers</span></div>
     </div>
   </aside>
 
-  <!-- Main -->
-  <div class="main">
-    <header class="topbar">
-      <button class="menu-toggle" aria-label="Toggle menu">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-      </button>
-      <span class="topbar-title">Feedback Platform</span>
-      <div class="topbar-search">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-        <input type="text" placeholder="Search…">
+  <!-- Right: auth form -->
+  <section class="auth-form-col">
+    <div class="auth-box">
+
+      <div class="auth-tabs">
+        <button class="auth-tab active" id="tabLogin" onclick="showPanel('login')">Log In</button>
+        <button class="auth-tab" id="tabSignup" onclick="showPanel('signup')">Create Account</button>
       </div>
-      <div class="topbar-right">
-        <a class="btn-primary" href="surveys.html">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
-          <span class="btn-label">New Survey</span>
+
+      <!-- Login panel -->
+      <div class="auth-form-panel active" id="panelLogin">
+        <h1>Welcome back</h1>
+        <p class="auth-sub">Log in to view your feedback dashboard.</p>
+
+        <a class="btn-google" href="#" id="googleLoginBtn">
+          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l6-6C34.9 5.4 29.8 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21c0-1.2-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.8 1.1 8 3l6-6C34.9 6.4 29.8 4 24 4c-7.6 0-14.2 4.3-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.7 0 10.7-1.9 14.6-5.2l-6.7-5.7c-2 1.5-4.7 2.4-7.9 2.4-5.3 0-9.7-3.4-11.3-8.1l-6.6 5.1C9.7 39.6 16.3 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.2 5.6l6.7 5.7C41.5 36.2 44 30.6 44 24c0-1.2-.1-2.4-.4-3.5z"/></svg>
+          Continue with Google
         </a>
-        <div class="avatar">AM</div>
+
+        <div class="auth-divider">or log in with email</div>
+
+        <p class="auth-error" id="loginError" style="display:none;"></p>
+
+        <form id="loginForm">
+          <div class="field">
+            <label for="loginEmail">Email Address</label>
+            <input id="loginEmail" type="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field" style="margin-bottom:10px;">
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" type="password" placeholder="Enter your password" required>
+          </div>
+          <div class="auth-row-between">
+            <span></span>
+            <a href="#">Forgot password?</a>
+          </div>
+          <button type="submit" class="btn-primary" id="loginSubmitBtn" style="width:100%; justify-content:center; padding:11px;">Log In</button>
+        </form>
+
+        <p class="auth-switch">Don't have an account? <a href="#" onclick="showPanel('signup'); return false;">Create one</a></p>
       </div>
-    </header>
 
-    <main class="page">
-      <div class="page-header">
-        <h1>Dashboard</h1>
-        <p>An overview of how your customers feel right now.</p>
+      <!-- Signup panel -->
+      <div class="auth-form-panel" id="panelSignup">
+        <h1>Create your account</h1>
+        <p class="auth-sub">Free to join — start collecting feedback in minutes.</p>
+
+        <a class="btn-google" href="#" id="googleSignupBtn">
+          <svg width="18" height="18" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3c-1.6 4.6-6 8-11.3 8-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.1 8 3l6-6C34.9 5.4 29.8 3 24 3 12.4 3 3 12.4 3 24s9.4 21 21 21 21-9.4 21-21c0-1.2-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.6 15.9 18.9 13 24 13c3.1 0 5.8 1.1 8 3l6-6C34.9 6.4 29.8 4 24 4c-7.6 0-14.2 4.3-17.7 10.7z"/><path fill="#4CAF50" d="M24 44c5.7 0 10.7-1.9 14.6-5.2l-6.7-5.7c-2 1.5-4.7 2.4-7.9 2.4-5.3 0-9.7-3.4-11.3-8.1l-6.6 5.1C9.7 39.6 16.3 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.3-2.3 4.2-4.2 5.6l6.7 5.7C41.5 36.2 44 30.6 44 24c0-1.2-.1-2.4-.4-3.5z"/></svg>
+          Sign up with Google
+        </a>
+
+        <div class="auth-divider">or sign up with email</div>
+
+        <p class="auth-error" id="signupError" style="display:none;"></p>
+
+        <form id="signupForm">
+          <div class="field">
+            <label for="signupName">Full Name</label>
+            <input id="signupName" type="text" placeholder="Alex Mercer" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="signupCompany">Company Name</label>
+              <input id="signupCompany" type="text" placeholder="TechFlow Inc." required>
+            </div>
+            <div class="field">
+              <label for="signupJobTitle">Job Title</label>
+              <input id="signupJobTitle" type="text" placeholder="Product Manager" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="signupEmail">Email Address</label>
+            <input id="signupEmail" type="email" placeholder="you@example.com" required>
+          </div>
+          <div class="field" style="margin-bottom:16px;">
+            <label for="signupPassword">Password</label>
+            <input id="signupPassword" type="password" placeholder="At least 6 characters" minlength="6" required>
+          </div>
+          <label class="check-row">
+            <input type="checkbox" required>
+            <span>I agree to the <a href="#">Terms</a> and <a href="#">Privacy Policy</a></span>
+          </label>
+          <button type="submit" class="btn-primary" id="signupSubmitBtn" style="width:100%; justify-content:center; padding:11px;">Create Free Account</button>
+        </form>
+
+        <p class="auth-switch">Already have an account? <a href="#" onclick="showPanel('login'); return false;">Log in</a></p>
       </div>
 
-      <section class="stat-grid">
-        <div class="stat-card">
-          <div class="stat-label">
-            <span>Total Feedback</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.38 8.38 0 0 1 3 11.5 8.5 8.5 0 0 1 11.5 3 8.38 8.38 0 0 1 21 11.5Z"/></svg>
-          </div>
-          <div class="stat-value">1,240</div>
-          <div class="stat-delta up">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M17 7 7 17M7 7h10v10"/></svg>
-            12% from last month
-          </div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-label">
-            <span>Average Rating</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="var(--accent)" stroke="var(--accent-dark)" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <div class="stat-value">4.5 <span class="unit">Stars</span></div>
-          <div class="stat-delta up">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M17 7 7 17M7 7h10v10"/></svg>
-            0.2 point increase
-          </div>
-        </div>
-
-        <div class="stat-card">
-          <div class="stat-label">
-            <span>Satisfaction Rate</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2M9 9h.01M15 9h.01"/></svg>
-          </div>
-          <div class="stat-value">88%</div>
-          <div class="stat-delta flat">— Consistent average</div>
-        </div>
-      </section>
-
-      <section class="card">
-        <div class="card-pad">
-          <div class="card-head">
-            <h2>Feedback by Month</h2>
-            <span class="link-view-all">Last 6 Months ▾</span>
-          </div>
-          <div class="chart-wrap">
-            <div class="chart-bar-group"><div class="chart-bar" style="height:38%"></div></div>
-            <div class="chart-bar-group"><div class="chart-bar" style="height:52%"></div></div>
-            <div class="chart-bar-group"><div class="chart-bar" style="height:46%"></div></div>
-            <div class="chart-bar-group"><div class="chart-bar" style="height:64%"></div></div>
-            <div class="chart-bar-group"><div class="chart-bar" style="height:58%"></div></div>
-            <div class="chart-bar-group"><div class="chart-bar" style="height:80%"></div></div>
-          </div>
-          <div class="chart-labels-row">
-            <div>Jan</div><div>Feb</div><div>Mar</div><div>Apr</div><div>May</div><div>Jun</div>
-          </div>
-        </div>
-      </section>
-
-      <section class="card">
-        <div class="card-pad">
-          <div class="card-head">
-            <h2>Recent Customer Comments</h2>
-            <a class="link-view-all" href="feedback.html">View All</a>
-          </div>
-
-          <div class="comment-list">
-            <div class="comment-row">
-              <div class="comment-avatar">SJ</div>
-              <div class="comment-body">
-                <div class="comment-top">
-                  <span class="comment-name">Sarah Jenkins</span>
-                  <span class="comment-time">2 hours ago</span>
-                </div>
-                <div class="stars">★★★★★</div>
-                <p class="comment-text">The new analytics dashboard is incredibly intuitive. It saved our team hours of compiling data manually this week. Highly recommend the upgrade!</p>
-              </div>
-            </div>
-
-            <div class="comment-row">
-              <div class="comment-avatar">MC</div>
-              <div class="comment-body">
-                <div class="comment-top">
-                  <span class="comment-name">Michael Chen</span>
-                  <span class="comment-time">5 hours ago</span>
-                </div>
-                <div class="stars">★★★★<span class="off">★</span></div>
-                <p class="comment-text">Good overall experience, but the export feature could use some improvements. It tends to lag when exporting large datasets.</p>
-              </div>
-            </div>
-
-            <div class="comment-row">
-              <div class="comment-avatar">ER</div>
-              <div class="comment-body">
-                <div class="comment-top">
-                  <span class="comment-name">Elena Rodriguez</span>
-                  <span class="comment-time">1 day ago</span>
-                </div>
-                <div class="stars">★★★★★</div>
-                <p class="comment-text">Support team was phenomenal. They resolved my integration issue within 20 minutes. The platform itself is solid and clean.</p>
-              </div>
-            </div>
-
-            <div class="comment-row">
-              <div class="comment-avatar">DK</div>
-              <div class="comment-body">
-                <div class="comment-top">
-                  <span class="comment-name">David Kim</span>
-                  <span class="comment-time">2 days ago</span>
-                </div>
-                <div class="stars">★★★<span class="off">★★</span></div>
-                <p class="comment-text">It does what it says on the tin, but I feel like the customization options for the surveys are a bit limited compared to competitors.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-  </div>
+    </div>
+  </section>
 </div>
 
-<script src="script.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script>
+  function showPanel(which) {
+    document.getElementById('panelLogin').classList.toggle('active', which === 'login');
+    document.getElementById('panelSignup').classList.toggle('active', which === 'signup');
+    document.getElementById('tabLogin').classList.toggle('active', which === 'login');
+    document.getElementById('tabSignup').classList.toggle('active', which === 'signup');
+    hideError('loginError');
+    hideError('signupError');
+  }
+
+  function showError(id, message) {
+    var el = document.getElementById(id);
+    el.textContent = message;
+    el.style.display = 'block';
+  }
+  function hideError(id) {
+    var el = document.getElementById(id);
+    el.style.display = 'none';
+    el.innerHTML = '';
+  }
+
+  function friendlyAuthError(err) {
+    switch (err.code) {
+      case 'auth/email-already-in-use':
+        return 'EMAIL_EXISTS';
+      case 'auth/invalid-email':
+        return 'That email address doesn\'t look right.';
+      case 'auth/weak-password':
+        return 'Password should be at least 6 characters.';
+      case 'auth/user-not-found':
+      case 'auth/invalid-credential':
+      case 'auth/wrong-password':
+        return 'Email or password is incorrect.';
+      case 'auth/too-many-requests':
+        return 'Too many attempts — please wait a moment and try again.';
+      default:
+        return err.message || 'Something went wrong. Please try again.';
+    }
+  }
+
+  function firebaseReady() {
+    return typeof firebase !== 'undefined' && firebase.apps && firebase.apps.length > 0;
+  }
+
+  function saveUserProfile(user, extra) {
+    if (typeof db === 'undefined') return Promise.resolve();
+    return db.collection('users').doc(user.uid).set(Object.assign({
+      email: user.email,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp()
+    }, extra), { merge: true });
+  }
+
+  /* ---------------- Email/password login ---------------- */
+
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    hideError('loginError');
+
+    if (!firebaseReady()) {
+      showError('loginError', 'Sign-in isn\'t configured yet. Check firebase-config.js.');
+      return;
+    }
+
+    var email = document.getElementById('loginEmail').value.trim();
+    var password = document.getElementById('loginPassword').value;
+    var btn = document.getElementById('loginSubmitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Logging in…';
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+      .then(function () {
+        window.location.href = 'dashboard.html';
+      })
+      .catch(function (err) {
+        btn.disabled = false;
+        btn.textContent = 'Log In';
+        showError('loginError', friendlyAuthError(err));
+      });
+  });
+
+  /* ---------------- Email/password signup ---------------- */
+
+  document.getElementById('signupForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    hideError('signupError');
+
+    if (!firebaseReady()) {
+      showError('signupError', 'Sign-up isn\'t configured yet. Check firebase-config.js.');
+      return;
+    }
+
+    var name = document.getElementById('signupName').value.trim();
+    var company = document.getElementById('signupCompany').value.trim();
+    var jobTitle = document.getElementById('signupJobTitle').value.trim();
+    var email = document.getElementById('signupEmail').value.trim();
+    var password = document.getElementById('signupPassword').value;
+    var btn = document.getElementById('signupSubmitBtn');
+    btn.disabled = true;
+    btn.textContent = 'Creating account…';
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(function (cred) {
+        return cred.user.updateProfile({ displayName: name }).then(function () {
+          return saveUserProfile(cred.user, { fullName: name, company: company, jobTitle: jobTitle });
+        });
+      })
+      .then(function () {
+        window.location.href = 'dashboard.html';
+      })
+      .catch(function (err) {
+        btn.disabled = false;
+        btn.textContent = 'Create Free Account';
+        var friendly = friendlyAuthError(err);
+        if (friendly === 'EMAIL_EXISTS') {
+          showError('signupError',
+            'That email is already registered. ');
+          var link = document.createElement('a');
+          link.href = '#';
+          link.textContent = 'Please log in instead.';
+          link.style.fontWeight = '700';
+          link.onclick = function (ev) {
+            ev.preventDefault();
+            showPanel('login');
+            document.getElementById('loginEmail').value = email;
+          };
+          document.getElementById('signupError').appendChild(link);
+        } else {
+          showError('signupError', friendly);
+        }
+      });
+  });
+
+  /* ---------------- Google sign-in (both tabs) ---------------- */
+
+  function googleSignIn(errorElId) {
+    if (!firebaseReady()) {
+      showError(errorElId, 'Google sign-in isn\'t configured yet. Check firebase-config.js.');
+      return;
+    }
+    var provider = new firebase.auth.GoogleAuthProvider();
+    firebase.auth().signInWithPopup(provider)
+      .then(function (result) {
+        var user = result.user;
+        return db.collection('users').doc(user.uid).get().then(function (doc) {
+          if (!doc.exists) {
+            return saveUserProfile(user, { fullName: user.displayName || '', company: '', jobTitle: '' });
+          }
+        });
+      })
+      .then(function () {
+        window.location.href = 'dashboard.html';
+      })
+      .catch(function (err) {
+        showError(errorElId, friendlyAuthError(err));
+      });
+  }
+
+  document.getElementById('googleLoginBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+    googleSignIn('loginError');
+  });
+  document.getElementById('googleSignupBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+    googleSignIn('signupError');
+  });
+
+  /* If someone's already logged in and lands here directly, skip the form. */
+  if (firebaseReady()) {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) window.location.href = 'dashboard.html';
+    });
+  }
+</script>
 </body>
 </html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Survey · FeedbackPro</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="respond-shell">
+  <div class="respond-card">
+    <div class="respond-brand">
+      <div class="brand-mark">FP</div>
+      <div>
+        <div class="brand-text-name">FeedbackPro</div>
+        <div class="brand-text-sub">Free Feedback Platform</div>
+      </div>
+    </div>
+
+    <div class="respond-panel" id="respondPanel">
+      <!-- filled in by script -->
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+
+<script src="script.js"></script>
+<script>
+  var panel = document.getElementById('respondPanel');
+
+  function decodeSurvey() {
+    var params = new URLSearchParams(window.location.search);
+    var encoded = params.get('s');
+    if (!encoded) return null;
+    try {
+      var json = decodeURIComponent(escape(atob(encoded)));
+      return JSON.parse(json);
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function renderError() {
+    panel.innerHTML =
+      '<div class="respond-error">' +
+        '<h3>This survey link isn\'t valid</h3>' +
+        '<p>It may be incomplete or corrupted. Ask whoever shared it to send the link again.</p>' +
+      '</div>';
+  }
+
+  function starPickerHtml(qid) {
+    var stars = '';
+    for (var i = 1; i <= 5; i++) {
+      stars += '<button type="button" data-role="star" data-qid="' + qid + '" data-val="' + i + '">★</button>';
+    }
+    return '<div class="star-picker" data-star-group="' + qid + '">' + stars + '</div>';
+  }
+
+  function renderSurvey(survey) {
+    var questions = survey.questions || [];
+
+    var head =
+      '<div class="respond-head">' +
+        '<h1>' + (survey.title || 'Untitled Survey') + '</h1>' +
+        '<p>We value your feedback</p>' +
+      '</div>';
+
+    var body = '<div class="respond-body"><form id="respondForm">';
+
+    questions.forEach(function (q, i) {
+      var label = (q.text && q.text.trim()) ||
+        (q.type === 'Full Name' ? 'Full Name' : q.type === 'Email Address' ? 'Email Address' : 'Question ' + (i + 1));
+
+      body += '<div class="respond-q" data-qtype="' + q.type + '" data-qid="' + q.id + '">';
+      body += '<label class="q-label">' + (i + 1) + '. ' + label + '</label>';
+
+      if (q.type === 'Multiple Choice') {
+        var opts = (q.options || '').split(',').map(function (o) { return o.trim(); }).filter(Boolean);
+        if (!opts.length) opts = ['Option A', 'Option B'];
+        opts.forEach(function (opt) {
+          body += '<label class="radio-option"><input type="radio" name="' + q.id + '" value="' + opt.replace(/"/g, '&quot;') + '"> ' + opt + '</label>';
+        });
+      } else if (q.type === 'Yes / No') {
+        body += '<label class="radio-option"><input type="radio" name="' + q.id + '" value="Yes"> Yes</label>';
+        body += '<label class="radio-option"><input type="radio" name="' + q.id + '" value="No"> No</label>';
+      } else if (q.type === 'Star Rating') {
+        body += starPickerHtml(q.id);
+        body += '<input type="hidden" name="' + q.id + '" id="hidden_' + q.id + '" value="">';
+      } else if (q.type === 'Full Name') {
+        body += '<input type="text" name="' + q.id + '" placeholder="Jane Doe">';
+      } else if (q.type === 'Email Address') {
+        body += '<input type="email" name="' + q.id + '" placeholder="jane@example.com">';
+      } else {
+        body += '<textarea name="' + q.id + '" rows="3" placeholder="Type your answer…"></textarea>';
+      }
+
+      body += '</div>';
+    });
+
+    body += '<button type="submit" class="btn-block primary">Submit Feedback</button>';
+    body += '</form></div>';
+
+    panel.innerHTML = head + body;
+
+    // Star picker interactions
+    panel.querySelectorAll('.star-picker[data-star-group]').forEach(function (group) {
+      var qid = group.getAttribute('data-star-group');
+      group.querySelectorAll('button').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var val = parseInt(btn.getAttribute('data-val'), 10);
+          document.getElementById('hidden_' + qid).value = val;
+          group.querySelectorAll('button').forEach(function (b) {
+            b.classList.toggle('filled', parseInt(b.getAttribute('data-val'), 10) <= val);
+          });
+        });
+      });
+    });
+
+    document.getElementById('respondForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      handleSubmit(survey, questions);
+    });
+  }
+
+  function handleSubmit(survey, questions) {
+    var formData = new FormData(document.getElementById('respondForm'));
+    var answers = {};
+    questions.forEach(function (q) { answers[q.id] = (formData.get(q.id) || '').toString().trim(); });
+
+    var name = null, email = null, rating = null;
+    var textParts = [];
+
+    questions.forEach(function (q) {
+      var val = answers[q.id];
+      if (!val) return;
+      if (q.type === 'Full Name') name = val;
+      else if (q.type === 'Email Address') email = val;
+      else if (q.type === 'Star Rating') rating = parseInt(val, 10);
+      else if (q.type === 'Yes / No') {
+        if (rating === null) rating = val === 'Yes' ? 5 : 2;
+        textParts.push((q.text || 'Question') + ': ' + val);
+      } else if (q.type === 'Multiple Choice') {
+        if (rating === null) {
+          var lower = val.toLowerCase();
+          rating = lower.indexOf('excellent') > -1 || lower.indexOf('great') > -1 ? 5
+            : lower.indexOf('good') > -1 ? 4
+            : lower.indexOf('improve') > -1 || lower.indexOf('poor') > -1 || lower.indexOf('bad') > -1 ? 2
+            : 3;
+        }
+        textParts.push((q.text || 'Question') + ': ' + val);
+      } else {
+        textParts.push(val);
+      }
+    });
+
+    var submitBtn = document.querySelector('#respondForm button[type="submit"]');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Submitting…';
+
+    fpAddFeedback({
+      name: name || 'Anonymous respondent',
+      initials: fpInitials(name || 'Anonymous respondent'),
+      email: email || null,
+      date: fpFormatDate(new Date()),
+      tag: 'New Response',
+      rating: rating || 3,
+      text: textParts.length ? textParts.join(' · ') : 'No additional comments provided.',
+      survey: survey.title || 'Untitled Survey',
+      ownerId: survey.ownerId || null
+    }).then(function () {
+      panel.innerHTML =
+        '<div class="respond-empty">' +
+          '<div style="font-size:34px; margin-bottom:10px;">✅</div>' +
+          '<h3>Thanks for your feedback!</h3>' +
+          '<p>Your response has been recorded and sent to the team.</p>' +
+        '</div>';
+    }).catch(function (err) {
+      console.error(err);
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Submit Feedback';
+      var errBox = document.createElement('p');
+      errBox.style.cssText = 'color:var(--red); font-size:12.5px; text-align:center; margin-top:10px;';
+      errBox.textContent = 'Something went wrong saving your response. Please try again.';
+      document.getElementById('respondForm').appendChild(errBox);
+    });
+  }
+
+  var survey = decodeSurvey();
+  if (!survey || !survey.questions || !survey.questions.length) {
+    renderError();
+  } else {
+    renderSurvey(survey);
+  }
+</script>
+</body>
+</html>

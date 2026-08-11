@@ -22,7 +22,7 @@
     </div>
 
     <nav class="sidebar-nav">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="dashboard.html">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
         Dashboard
       </a>
@@ -34,7 +34,11 @@
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.38 8.38 0 0 1 3 11.5 8.5 8.5 0 0 1 11.5 3 8.38 8.38 0 0 1 21 11.5Z"/></svg>
         Feedback
       </a>
-      <a class="nav-link" href="#">
+            <a class="nav-link" href="analytics.html">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="1"/><rect x="12.5" y="8" width="3" height="10" rx="1"/><rect x="18" y="5" width="3" height="13" rx="1"/></svg>
+        Analytics
+      </a>
+      <a class="nav-link" href="customers.html">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         Customers
       </a>
@@ -42,12 +46,7 @@
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
         Settings
       </a>
-    </nav>
-
-    <div class="sidebar-upgrade">
-      <button class="btn-upgrade">Upgrade Plan</button>
-    </div>
-  </aside>
+    </nav>  </aside>
 
   <div class="main">
     <header class="topbar">
@@ -64,7 +63,17 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
           <span class="btn-label">New Survey</span>
         </a>
-        <div class="avatar">AM</div>
+        <div class="account-menu-wrap">
+          <button class="avatar" id="avatarBtn" type="button" aria-label="Account menu"><span data-account="initials">--</span></button>
+          <div class="account-menu" id="accountMenu">
+            <div class="account-menu-head">
+              <div class="account-menu-name" id="accountMenuName">Loading…</div>
+              <div class="account-menu-email" id="accountMenuEmail"></div>
+            </div>
+            <a class="account-menu-item" href="settings.html">Settings</a>
+            <button class="account-menu-item account-menu-logout" id="logoutBtn" type="button">Log Out</button>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -83,29 +92,9 @@
               <input id="surveyTitle" type="text" placeholder="e.g., Customer Satisfaction Q3">
             </div>
 
-            <div class="question-block">
-              <div class="question-block-head">
-                <span class="q-number">1</span>
-                <span class="q-number-label">Question 1</span>
-              </div>
+            <div id="questionsWrap"></div>
 
-              <div class="field">
-                <label for="qText">Question Text</label>
-                <input id="qText" type="text" placeholder="What did you think of our service?">
-              </div>
-
-              <div class="field" style="margin-bottom:0;">
-                <label for="qType">Question Type</label>
-                <select id="qType">
-                  <option>Multiple Choice</option>
-                  <option>Star Rating</option>
-                  <option>Short Answer</option>
-                  <option>Yes / No</option>
-                </select>
-              </div>
-            </div>
-
-            <a class="link-add" href="#">
+            <a class="link-add" href="#" id="addQuestionBtn">
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
               Add Question
             </a>
@@ -117,25 +106,25 @@
           <div class="preview-card-head">
             <div class="eyebrow">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 12C2.5 7 6.5 3 12 3s9.5 4 9.5 9-4 9-9.5 9c-1.6 0-3.1-.4-4.4-1L3 21l1-4.6c-.9-1.3-1.5-2.8-1.5-4.4Z"/></svg>
-              Preview: Customer Satisfaction Q3
+              <span id="previewEyebrow">Preview: Untitled Survey</span>
             </div>
             <h3>We value your feedback</h3>
           </div>
-          <div class="preview-card-body">
-            <p class="q">1. What did you think of our service?</p>
 
-            <label class="radio-option"><input type="radio" name="prev"> Excellent</label>
-            <label class="radio-option"><input type="radio" name="prev"> Good</label>
-            <label class="radio-option"><input type="radio" name="prev"> Needs Improvement</label>
-
-            <button class="btn-block disabled" disabled>Submit Feedback</button>
+          <div class="preview-card-body" id="previewBody">
+            <span class="preview-static-badge">Read-only preview</span>
+            <!-- filled in by renderPreview() -->
           </div>
         </section>
       </div>
 
-      <div class="actions-end">
-        <button class="btn-outline">Save Draft</button>
-        <button class="btn-primary">
+      <div class="actions-end" style="align-items:center;">
+        <span class="draft-saved-note" id="draftSavedNote">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M20 6 9 17l-5-5"/></svg>
+          Draft saved — preview updated
+        </span>
+        <button class="btn-outline" id="saveDraftBtn">Save Draft</button>
+        <button class="btn-primary" id="publishBtn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 3 18 9-18 9V3Z"/></svg>
           Publish Survey
         </button>
@@ -144,6 +133,234 @@
   </div>
 </div>
 
+<!-- Publish modal -->
+<div class="modal-overlay" id="publishModal">
+  <div class="modal-box">
+    <h3>Survey published 🎉</h3>
+    <p class="modal-sub">Share this link or QR code so people can respond.</p>
+
+    <div class="qr-frame">
+      <img id="qrImage" src="" alt="QR code linking to the survey">
+    </div>
+
+    <div class="link-copy-row">
+      <input type="text" id="publishedLink" readonly>
+      <button class="btn-outline" id="copyLinkBtn" style="white-space:nowrap;">Copy</button>
+    </div>
+
+    <p class="modal-note">Anyone who opens this link or scans the QR code can fill out the survey. Responses sync to your Feedback page in real time, from any device.</p>
+
+    <div class="modal-actions">
+      <button class="btn-outline" id="closeModalBtn">Close</button>
+      <a class="btn-primary" href="feedback.html">Go to Feedback</a>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script src="script.js"></script>
+<script>
+  /* ---------------------------------------------------------------------
+     Survey builder state
+     --------------------------------------------------------------------- */
+
+  var QUESTION_TYPES = ['Multiple Choice', 'Star Rating', 'Short Answer', 'Yes / No', 'Full Name', 'Email Address'];
+
+  var draftSurvey = {
+    title: '',
+    questions: [
+      { id: 'q1', text: 'What did you think of our service?', type: 'Multiple Choice', options: 'Excellent, Good, Needs Improvement' }
+    ]
+  };
+  var qCounter = 1;
+
+  var titleInput = document.getElementById('surveyTitle');
+  var questionsWrap = document.getElementById('questionsWrap');
+  var previewEyebrow = document.getElementById('previewEyebrow');
+  var previewBody = document.getElementById('previewBody');
+  var draftSavedNote = document.getElementById('draftSavedNote');
+
+  function currentTitle() {
+    return draftSurvey.title.trim() || 'Untitled Survey';
+  }
+
+  /* ---------------------------------------------------------------------
+     Render the builder (question cards)
+     --------------------------------------------------------------------- */
+
+  function renderBuilder() {
+    questionsWrap.innerHTML = draftSurvey.questions.map(function (q, i) {
+      var optionsField = q.type === 'Multiple Choice'
+        ? '<div class="field" style="margin-top:12px; margin-bottom:0;">' +
+            '<label>Options (comma-separated)</label>' +
+            '<input type="text" data-role="options" data-qid="' + q.id + '" value="' + (q.options || '').replace(/"/g, '&quot;') + '" placeholder="Excellent, Good, Needs Improvement">' +
+          '</div>'
+        : '';
+
+      var typeHint = q.type === 'Full Name' ? 'Respondents will type their name here — used to label their feedback.'
+        : q.type === 'Email Address' ? 'Respondents will enter their email here — lets you reply directly from Feedback.'
+        : '';
+
+      var removeBtn = draftSurvey.questions.length > 1
+        ? '<button class="question-block-remove" data-role="remove" data-qid="' + q.id + '" type="button" aria-label="Remove question">' +
+            '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m3 0-1 14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2L4 6"/></svg>' +
+          '</button>'
+        : '';
+
+      return (
+        '<div class="question-block">' +
+          '<div class="question-block-head">' +
+            '<span class="q-number">' + (i + 1) + '</span>' +
+            '<span class="q-number-label">Question ' + (i + 1) + '</span>' +
+            removeBtn +
+          '</div>' +
+          '<div class="field">' +
+            '<label>Question Text</label>' +
+            '<input type="text" data-role="text" data-qid="' + q.id + '" value="' + (q.text || '').replace(/"/g, '&quot;') + '" placeholder="What did you think of our service?">' +
+          '</div>' +
+          '<div class="field" style="margin-bottom:0;">' +
+            '<label>Question Type</label>' +
+            '<select data-role="type" data-qid="' + q.id + '">' +
+              QUESTION_TYPES.map(function (t) {
+                return '<option' + (t === q.type ? ' selected' : '') + '>' + t + '</option>';
+              }).join('') +
+            '</select>' +
+            (typeHint ? '<div class="type-hint">' + typeHint + '</div>' : '') +
+          '</div>' +
+          optionsField +
+        '</div>'
+      );
+    }).join('');
+  }
+
+  questionsWrap.addEventListener('input', function (e) {
+    var role = e.target.getAttribute('data-role');
+    var qid = e.target.getAttribute('data-qid');
+    if (!role || !qid) return;
+    var q = draftSurvey.questions.find(function (x) { return x.id === qid; });
+    if (!q) return;
+    if (role === 'text') q.text = e.target.value;
+    if (role === 'options') q.options = e.target.value;
+  });
+
+  questionsWrap.addEventListener('change', function (e) {
+    var role = e.target.getAttribute('data-role');
+    var qid = e.target.getAttribute('data-qid');
+    if (role === 'type' && qid) {
+      var q = draftSurvey.questions.find(function (x) { return x.id === qid; });
+      if (q) { q.type = e.target.value; renderBuilder(); }
+    }
+  });
+
+  questionsWrap.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-role="remove"]');
+    if (!btn) return;
+    var qid = btn.getAttribute('data-qid');
+    draftSurvey.questions = draftSurvey.questions.filter(function (x) { return x.id !== qid; });
+    renderBuilder();
+  });
+
+  titleInput.addEventListener('input', function () { draftSurvey.title = titleInput.value; });
+
+  document.getElementById('addQuestionBtn').addEventListener('click', function (e) {
+    e.preventDefault();
+    qCounter++;
+    draftSurvey.questions.push({ id: 'q' + qCounter, text: '', type: 'Short Answer', options: '' });
+    renderBuilder();
+  });
+
+  /* ---------------------------------------------------------------------
+     Preview — only updates when "Save Draft" is clicked
+     --------------------------------------------------------------------- */
+
+  function renderPreview() {
+    previewEyebrow.textContent = 'Preview: ' + currentTitle();
+
+    var html = '<span class="preview-static-badge">Read-only preview</span>';
+
+    draftSurvey.questions.forEach(function (q, i) {
+      var label = (q.text.trim() || (q.type === 'Full Name' ? 'Full Name' : q.type === 'Email Address' ? 'Email Address' : 'Untitled question'));
+      html += '<div class="preview-q-block">';
+      html += '<p class="q">' + (i + 1) + '. ' + label + '</p>';
+
+      if (q.type === 'Multiple Choice') {
+        var opts = (q.options || '').split(',').map(function (o) { return o.trim(); }).filter(Boolean);
+        if (!opts.length) opts = ['Option A', 'Option B'];
+        opts.forEach(function (opt) {
+          html += '<label class="radio-option"><input type="radio" disabled> ' + opt + '</label>';
+        });
+      } else if (q.type === 'Yes / No') {
+        html += '<label class="radio-option"><input type="radio" disabled> Yes</label>';
+        html += '<label class="radio-option"><input type="radio" disabled> No</label>';
+      } else if (q.type === 'Star Rating') {
+        html += '<div class="star-picker readonly">★★★★★</div>';
+      } else if (q.type === 'Full Name') {
+        html += '<input type="text" disabled placeholder="Jane Doe">';
+      } else if (q.type === 'Email Address') {
+        html += '<input type="email" disabled placeholder="jane@example.com">';
+      } else {
+        html += '<textarea rows="2" disabled placeholder="Respondent types their answer…"></textarea>';
+      }
+      html += '</div>';
+    });
+
+    previewBody.innerHTML = html;
+  }
+
+  document.getElementById('saveDraftBtn').addEventListener('click', function () {
+    renderPreview();
+    draftSavedNote.classList.add('show');
+    setTimeout(function () { draftSavedNote.classList.remove('show'); }, 2200);
+  });
+
+  /* ---------------------------------------------------------------------
+     Publish — encode survey into a shareable link + QR code
+     --------------------------------------------------------------------- */
+
+  function encodeSurvey(survey) {
+    var json = JSON.stringify(survey);
+    return btoa(unescape(encodeURIComponent(json)));
+  }
+
+  document.getElementById('publishBtn').addEventListener('click', function () {
+    if (!draftSurvey.title.trim()) draftSurvey.title = 'Untitled Survey';
+    draftSurvey.ownerId = currentUser ? currentUser.uid : null;
+    renderPreview();
+
+    var encoded = encodeSurvey(draftSurvey);
+    var base = window.location.href.replace(/surveys\.html.*$/, '');
+    var link = base + 'respond.html?s=' + encoded;
+
+    document.getElementById('publishedLink').value = link;
+    document.getElementById('qrImage').src =
+      'https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=' + encodeURIComponent(link);
+
+    document.getElementById('publishModal').classList.add('show');
+  });
+
+  document.getElementById('copyLinkBtn').addEventListener('click', function () {
+    var input = document.getElementById('publishedLink');
+    input.select();
+    input.setSelectionRange(0, 99999);
+    navigator.clipboard && navigator.clipboard.writeText(input.value);
+    var btn = document.getElementById('copyLinkBtn');
+    var old = btn.textContent;
+    btn.textContent = 'Copied!';
+    setTimeout(function () { btn.textContent = old; }, 1500);
+  });
+
+  document.getElementById('closeModalBtn').addEventListener('click', function () {
+    document.getElementById('publishModal').classList.remove('show');
+  });
+
+  renderBuilder();
+  renderPreview();
+
+  var currentUser = null;
+  fpRequireAuth(function (user) { currentUser = user; });
+</script>
 </body>
 </html>

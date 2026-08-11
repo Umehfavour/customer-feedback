@@ -22,7 +22,7 @@
     </div>
 
     <nav class="sidebar-nav">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="dashboard.html">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
         Dashboard
       </a>
@@ -34,7 +34,11 @@
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.38 8.38 0 0 1 3 11.5 8.5 8.5 0 0 1 11.5 3 8.38 8.38 0 0 1 21 11.5Z"/></svg>
         Feedback
       </a>
-      <a class="nav-link" href="#">
+            <a class="nav-link" href="analytics.html">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="1"/><rect x="12.5" y="8" width="3" height="10" rx="1"/><rect x="18" y="5" width="3" height="13" rx="1"/></svg>
+        Analytics
+      </a>
+      <a class="nav-link" href="customers.html">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         Customers
       </a>
@@ -42,12 +46,7 @@
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
         Settings
       </a>
-    </nav>
-
-    <div class="sidebar-upgrade">
-      <button class="btn-upgrade">Upgrade Plan</button>
-    </div>
-  </aside>
+    </nav>  </aside>
 
   <div class="main">
     <header class="topbar">
@@ -64,7 +63,17 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
           <span class="btn-label">New Survey</span>
         </a>
-        <div class="avatar">AM</div>
+        <div class="account-menu-wrap">
+          <button class="avatar" id="avatarBtn" type="button" aria-label="Account menu"><span data-account="initials">--</span></button>
+          <div class="account-menu" id="accountMenu">
+            <div class="account-menu-head">
+              <div class="account-menu-name" id="accountMenuName">Loading…</div>
+              <div class="account-menu-email" id="accountMenuEmail"></div>
+            </div>
+            <a class="account-menu-item" href="settings.html">Settings</a>
+            <button class="account-menu-item account-menu-logout" id="logoutBtn" type="button">Log Out</button>
+          </div>
+        </div>
       </div>
     </header>
 
@@ -78,16 +87,15 @@
         <div class="card-pad">
           <div class="profile-head">
             <div class="profile-who">
-              <div class="profile-avatar">AM</div>
+              <div class="profile-avatar"><span data-account="initials">--</span></div>
               <div>
                 <div class="profile-name-line">
-                  <h3>Alex Mercer</h3>
-                  <span class="badge-admin">ADMIN</span>
+                  <h3 id="profileName">Loading…</h3>
+                  <span class="badge-admin">MEMBER</span>
                 </div>
-                <div class="profile-email">alex.mercer@example.com</div>
+                <div class="profile-email" id="profileEmailDisplay"></div>
               </div>
             </div>
-            <button class="btn-primary">Edit Profile</button>
           </div>
         </div>
       </section>
@@ -99,21 +107,21 @@
           <div class="field-row">
             <div class="field">
               <label for="fullName">Full Name</label>
-              <input id="fullName" type="text" value="Alex Mercer">
+              <input id="fullName" type="text" value="">
             </div>
             <div class="field">
               <label for="email">Email Address</label>
-              <input id="email" type="email" value="alex.mercer@example.com">
+              <input id="email" type="email" value="" disabled style="opacity:0.65; cursor:not-allowed;">
             </div>
           </div>
           <div class="field-row">
             <div class="field" style="margin-bottom:0;">
               <label for="jobTitle">Job Title</label>
-              <input id="jobTitle" type="text" value="Product Manager">
+              <input id="jobTitle" type="text" value="">
             </div>
             <div class="field" style="margin-bottom:0;">
               <label for="company">Company Name</label>
-              <input id="company" type="text" value="TechFlow Inc.">
+              <input id="company" type="text" value="">
             </div>
           </div>
         </div>
@@ -129,7 +137,7 @@
               <span>Receive daily digests and important alerts via email.</span>
             </div>
             <label class="switch">
-              <input type="checkbox" checked>
+              <input type="checkbox" id="notifyEmail" checked>
               <span class="track"><span class="thumb"></span></span>
             </label>
           </div>
@@ -140,7 +148,7 @@
               <span>Get notified immediately when a user submits feedback.</span>
             </div>
             <label class="switch">
-              <input type="checkbox" checked>
+              <input type="checkbox" id="notifyResponses" checked>
               <span class="track"><span class="thumb"></span></span>
             </label>
           </div>
@@ -151,21 +159,99 @@
               <span>Updates on new features, maintenance, and announcements.</span>
             </div>
             <label class="switch">
-              <input type="checkbox">
+              <input type="checkbox" id="notifyUpdates">
               <span class="track"><span class="thumb"></span></span>
             </label>
           </div>
         </div>
       </section>
 
+      <p class="auth-error" id="settingsError" style="display:none; max-width:100%;"></p>
+      <p id="settingsSaved" style="display:none; color:var(--green); font-size:12.5px; font-weight:600; text-align:right; margin:0 0 8px;">Saved ✓</p>
+
       <div class="actions-end">
-        <button class="btn-outline">Cancel</button>
-        <button class="btn-primary">Save Changes</button>
+        <button class="btn-outline" id="cancelBtn" type="button">Cancel</button>
+        <button class="btn-primary" id="saveBtn" type="button">Save Changes</button>
       </div>
     </main>
   </div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script src="script.js"></script>
+<script>
+  var currentUser = null;
+
+  fpRequireAuth(function (user, profile) {
+    currentUser = user;
+    document.getElementById('profileName').textContent = profile.fullName || user.email;
+    document.getElementById('profileEmailDisplay').textContent = profile.email || user.email;
+    document.getElementById('fullName').value = profile.fullName || '';
+    document.getElementById('email').value = profile.email || user.email || '';
+    document.getElementById('jobTitle').value = profile.jobTitle || '';
+    document.getElementById('company').value = profile.company || '';
+
+    var notif = profile.notifications || {};
+    document.getElementById('notifyEmail').checked = notif.email !== false;
+    document.getElementById('notifyResponses').checked = notif.responses !== false;
+    document.getElementById('notifyUpdates').checked = !!notif.updates;
+  });
+
+  document.getElementById('cancelBtn').addEventListener('click', function () {
+    window.location.reload();
+  });
+
+  document.getElementById('saveBtn').addEventListener('click', function () {
+    var errEl = document.getElementById('settingsError');
+    var savedEl = document.getElementById('settingsSaved');
+    errEl.style.display = 'none';
+    savedEl.style.display = 'none';
+
+    if (!currentUser) return;
+
+    var fullName = document.getElementById('fullName').value.trim();
+    var jobTitle = document.getElementById('jobTitle').value.trim();
+    var company = document.getElementById('company').value.trim();
+    var notifications = {
+      email: document.getElementById('notifyEmail').checked,
+      responses: document.getElementById('notifyResponses').checked,
+      updates: document.getElementById('notifyUpdates').checked
+    };
+
+    var btn = document.getElementById('saveBtn');
+    btn.disabled = true;
+    btn.textContent = 'Saving…';
+
+    var authUpdate = currentUser.displayName !== fullName
+      ? currentUser.updateProfile({ displayName: fullName })
+      : Promise.resolve();
+
+    authUpdate
+      .then(function () {
+        return db.collection('users').doc(currentUser.uid).set({
+          fullName: fullName,
+          jobTitle: jobTitle,
+          company: company,
+          notifications: notifications
+        }, { merge: true });
+      })
+      .then(function () {
+        btn.disabled = false;
+        btn.textContent = 'Save Changes';
+        document.getElementById('profileName').textContent = fullName || currentUser.email;
+        savedEl.style.display = 'block';
+        setTimeout(function () { savedEl.style.display = 'none'; }, 2500);
+      })
+      .catch(function (err) {
+        btn.disabled = false;
+        btn.textContent = 'Save Changes';
+        errEl.textContent = err.message || 'Something went wrong saving your changes.';
+        errEl.style.display = 'block';
+      });
+  });
+</script>
 </body>
 </html>

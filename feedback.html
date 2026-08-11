@@ -22,7 +22,7 @@
     </div>
 
     <nav class="sidebar-nav">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="dashboard.html">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
         Dashboard
       </a>
@@ -34,7 +34,11 @@
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.38 8.38 0 0 1 3 11.5 8.5 8.5 0 0 1 11.5 3 8.38 8.38 0 0 1 21 11.5Z"/></svg>
         Feedback
       </a>
-      <a class="nav-link" href="#">
+            <a class="nav-link" href="analytics.html">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="1"/><rect x="12.5" y="8" width="3" height="10" rx="1"/><rect x="18" y="5" width="3" height="13" rx="1"/></svg>
+        Analytics
+      </a>
+      <a class="nav-link" href="customers.html">
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
         Customers
       </a>
@@ -42,12 +46,7 @@
         <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
         Settings
       </a>
-    </nav>
-
-    <div class="sidebar-upgrade">
-      <button class="btn-upgrade">Upgrade Plan</button>
-    </div>
-  </aside>
+    </nav>  </aside>
 
   <div class="main">
     <header class="topbar">
@@ -64,104 +63,202 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
           <span class="btn-label">New Survey</span>
         </a>
-        <div class="avatar">AM</div>
+        <div class="account-menu-wrap">
+          <button class="avatar" id="avatarBtn" type="button" aria-label="Account menu"><span data-account="initials">--</span></button>
+          <div class="account-menu" id="accountMenu">
+            <div class="account-menu-head">
+              <div class="account-menu-name" id="accountMenuName">Loading…</div>
+              <div class="account-menu-email" id="accountMenuEmail"></div>
+            </div>
+            <a class="account-menu-item" href="settings.html">Settings</a>
+            <button class="account-menu-item account-menu-logout" id="logoutBtn" type="button">Log Out</button>
+          </div>
+        </div>
       </div>
     </header>
 
-    <main class="page">
-      <section class="card">
-        <div class="card-pad">
-          <div class="card-head">
-            <div>
-              <h2 style="font-size:19px;">Recent Feedback</h2>
-              <p>Review and manage incoming survey responses.</p>
+    <main class="page" style="max-width:1280px;">
+      <div class="feedback-layout">
+        <section class="card">
+          <div class="card-pad">
+            <div class="card-head">
+              <div>
+                <h2 style="font-size:19px;">Recent Feedback</h2>
+                <p>Review and manage incoming survey responses.</p>
+              </div>
+              <button class="select-filter">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
+                Filter
+              </button>
             </div>
-            <button class="select-filter">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M7 12h10M10 18h4"/></svg>
-              Filter
-            </button>
+
+            <div class="comment-list" id="feedbackList"></div>
+
+            <div class="empty-state" id="feedbackEmpty">
+              <div class="icon">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.38 8.38 0 0 1 3 11.5 8.5 8.5 0 0 1 11.5 3 8.38 8.38 0 0 1 21 11.5Z"/></svg>
+              </div>
+              <h3>No feedback yet</h3>
+              <p>Responses will show up here as soon as someone submits your survey.</p>
+              <a class="btn-primary" style="justify-content:center; display:inline-flex;" href="surveys.html">Create a Survey</a>
+            </div>
+
+            <div class="load-more-row" id="feedbackLoadMoreRow" style="display:none;">
+              <button class="btn-outline">Load More</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Insights sidebar -->
+        <aside class="insights-panel">
+          <div class="insights-head">
+            <h2>Feedback Insights</h2>
+            <p>Ratings breakdown over time</p>
           </div>
 
-          <div class="comment-list">
-            <article class="feedback-item">
-              <div class="feedback-item-top">
-                <div class="feedback-who">
-                  <div class="comment-avatar">JD</div>
-                  <div>
-                    <div class="feedback-name-line">
-                      <span class="name">Jane Doe</span>
-                    </div>
-                    <span class="sub">Oct 24, 2023 · Pro Plan</span>
-                  </div>
-                </div>
-                <div class="feedback-tagrating">
-                  <span class="tag tag-bug">Product Bug</span>
-                  <span class="stars">★★★<span class="off">★★</span></span>
-                </div>
-              </div>
-              <p class="comment-text">The new dashboard export feature is throwing an error when trying to download as PDF. CSV works fine, but we really need the PDF format for our weekly reports.</p>
-              <div class="comment-actions">
-                <button>Reply</button>
-                <button>Assign</button>
-              </div>
-            </article>
-
-            <article class="feedback-item">
-              <div class="feedback-item-top">
-                <div class="feedback-who">
-                  <div class="comment-avatar">AS</div>
-                  <div>
-                    <div class="feedback-name-line">
-                      <span class="name">Alex Smith</span>
-                    </div>
-                    <span class="sub">Oct 23, 2023 · Enterprise Plan</span>
-                  </div>
-                </div>
-                <div class="feedback-tagrating">
-                  <span class="tag tag-feature">Feature Request</span>
-                  <span class="stars">★★★★<span class="off">★</span></span>
-                </div>
-              </div>
-              <p class="comment-text">Would be amazing to have a dark mode toggle right in the sidebar instead of hidden in settings. Our team works late and the white background is a bit harsh at night.</p>
-              <div class="comment-actions">
-                <button>Reply</button>
-                <button>Assign</button>
-              </div>
-            </article>
-
-            <article class="feedback-item">
-              <div class="feedback-item-top">
-                <div class="feedback-who">
-                  <div class="comment-avatar">MR</div>
-                  <div>
-                    <div class="feedback-name-line">
-                      <span class="name">Maria Rodriguez</span>
-                    </div>
-                    <span class="sub">Oct 22, 2023 · Starter Plan</span>
-                  </div>
-                </div>
-                <div class="feedback-tagrating">
-                  <span class="tag tag-general">General</span>
-                  <span class="stars">★★★★★</span>
-                </div>
-              </div>
-              <p class="comment-text">Really enjoying the new interface update! Much cleaner and faster to navigate. Keep up the good work team.</p>
-              <div class="comment-actions">
-                <button>Reply</button>
-                <button>Assign</button>
-              </div>
-            </article>
+          <div class="period-tabs" id="periodTabs">
+            <button class="period-tab active" data-period="day">Day</button>
+            <button class="period-tab" data-period="week">Week</button>
+            <button class="period-tab" data-period="month">Month</button>
+            <button class="period-tab" data-period="year">Year</button>
           </div>
 
-          <div class="load-more-row">
-            <button class="btn-outline">Load More</button>
+          <div id="insightsBody">
+            <!-- filled in by script -->
           </div>
-        </div>
-      </section>
+        </aside>
+      </div>
     </main>
   </div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script src="emailjs-config.js"></script>
 <script src="script.js"></script>
+<script>
+  function fpTagHtml(tag) {
+    var cls = tag === 'Product Bug' ? 'tag-bug'
+      : tag === 'Feature Request' ? 'tag-feature'
+      : tag === 'General' ? 'tag-general'
+      : 'tag-new';
+    return '<span class="tag ' + cls + '">' + tag + '</span>';
+  }
+
+  function fpRenderFeedback(list) {
+    var listEl = document.getElementById('feedbackList');
+    var emptyEl = document.getElementById('feedbackEmpty');
+    var loadMoreRow = document.getElementById('feedbackLoadMoreRow');
+
+    window.__fpCurrentList = list;
+
+    if (!list.length) {
+      listEl.innerHTML = '';
+      emptyEl.style.display = 'block';
+      loadMoreRow.style.display = 'none';
+      return;
+    }
+
+    emptyEl.style.display = 'none';
+    loadMoreRow.style.display = list.length > 5 ? 'block' : 'none';
+
+    listEl.innerHTML = list.map(function (item, i) {
+      var emailLine = item.email ? '<div class="feedback-email">' + item.email + '</div>' : '';
+
+      return (
+        '<article class="feedback-item">' +
+          '<div class="feedback-item-top">' +
+            '<div class="feedback-who">' +
+              '<div class="comment-avatar">' + item.initials + '</div>' +
+              '<div>' +
+                '<div class="feedback-name-line"><span class="name">' + item.name + '</span></div>' +
+                '<span class="sub">' + item.date + (item.survey ? ' · ' + item.survey : '') + '</span>' +
+                emailLine +
+              '</div>' +
+            '</div>' +
+            '<div class="feedback-tagrating">' +
+              fpTagHtml(item.tag) +
+              '<span class="stars">' + fpStarsHtml(item.rating) + '</span>' +
+            '</div>' +
+          '</div>' +
+          '<p class="comment-text">' + item.text + '</p>' +
+          '<div class="comment-actions">' +
+            '<button data-role="reply-toggle" data-index="' + i + '">Reply</button>' +
+            '<button>Assign</button>' +
+          '</div>' +
+          '<div class="reply-box" id="replyBox' + i + '">' +
+            (item.email
+              ? '<textarea id="replyText' + i + '" placeholder="Type your reply to ' + item.email + '…"></textarea>' +
+                '<div class="reply-actions">' +
+                  '<button class="btn-primary" data-role="reply-send" data-index="' + i + '" type="button">Send Reply</button>' +
+                  '<span class="reply-status" id="replyStatus' + i + '" style="font-size:12px; color:var(--ink-500);">Sends straight to ' + item.email + '</span>' +
+                '</div>'
+              : '<span class="reply-no-email">No email was provided with this response, so a direct reply isn\'t available.</span>'
+            ) +
+          '</div>' +
+        '</article>'
+      );
+    }).join('');
+  }
+
+  document.getElementById('feedbackList').addEventListener('click', function (e) {
+    var toggleBtn = e.target.closest('[data-role="reply-toggle"]');
+    if (toggleBtn) {
+      var idx = toggleBtn.getAttribute('data-index');
+      document.getElementById('replyBox' + idx).classList.toggle('open');
+      return;
+    }
+
+    var sendBtn = e.target.closest('[data-role="reply-send"]');
+    if (sendBtn) {
+      var i = sendBtn.getAttribute('data-index');
+      var item = window.__fpCurrentList[i];
+      var textarea = document.getElementById('replyText' + i);
+      var statusEl = document.getElementById('replyStatus' + i);
+      var message = textarea.value.trim();
+      if (!message) { textarea.focus(); return; }
+
+      var subject = 'Re: your feedback on ' + (item.survey || 'FeedbackPro');
+      var emailJsReady = typeof emailjs !== 'undefined' &&
+        typeof EMAILJS_SERVICE_ID !== 'undefined' &&
+        EMAILJS_SERVICE_ID.indexOf('YOUR_') !== 0;
+
+      if (emailJsReady) {
+        sendBtn.disabled = true;
+        sendBtn.textContent = 'Sending…';
+        emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+          to_email: item.email,
+          subject: subject,
+          message: message
+        }).then(function () {
+          sendBtn.disabled = false;
+          sendBtn.textContent = 'Send Reply';
+          statusEl.textContent = 'Sent ✓';
+          statusEl.style.color = 'var(--green)';
+          textarea.value = '';
+        }).catch(function (err) {
+          console.error(err);
+          sendBtn.disabled = false;
+          sendBtn.textContent = 'Send Reply';
+          statusEl.textContent = 'Couldn\'t send — opening your email app instead';
+          statusEl.style.color = 'var(--red)';
+          window.location.href = 'mailto:' + encodeURIComponent(item.email) +
+            '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(message);
+        });
+      } else {
+        // EmailJS not configured yet — fall back to opening the admin's own email app.
+        window.location.href = 'mailto:' + encodeURIComponent(item.email) +
+          '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(message);
+      }
+    }
+  });
+
+  fpRequireAuth(function (user) {
+    fpListenFeedback(fpRenderFeedback, user.uid);
+  });
+</script>
 </body>
 </html>

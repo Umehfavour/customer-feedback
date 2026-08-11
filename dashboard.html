@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard · FeedbackPro</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+  <div class="sidebar-backdrop"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">FP</div>
+      <div>
+        <div class="brand-text-name">FeedbackPro</div>
+        <div class="brand-text-sub">SaaS Platform</div>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a class="nav-link active" href="dashboard.html">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        Dashboard
+      </a>
+      <a class="nav-link" href="surveys.html">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+        Surveys
+      </a>
+      <a class="nav-link" href="feedback.html">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-4-1L3 20l1-5.5A8.38 8.38 0 0 1 3 11.5 8.5 8.5 0 0 1 11.5 3 8.38 8.38 0 0 1 21 11.5Z"/></svg>
+        Feedback
+      </a>
+            <a class="nav-link" href="analytics.html">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6" rx="1"/><rect x="12.5" y="8" width="3" height="10" rx="1"/><rect x="18" y="5" width="3" height="13" rx="1"/></svg>
+        Analytics
+      </a>
+      <a class="nav-link" href="customers.html">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Customers
+      </a>
+      <a class="nav-link" href="settings.html">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+        Settings
+      </a>
+    </nav>  </aside>
+
+  <!-- Main -->
+  <div class="main">
+    <header class="topbar">
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+      <span class="topbar-title">Feedback Platform</span>
+      <div class="topbar-search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input type="text" placeholder="Search…">
+      </div>
+      <div class="topbar-right">
+        <a class="btn-primary" href="surveys.html">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+          <span class="btn-label">New Survey</span>
+        </a>
+        <div class="account-menu-wrap">
+          <button class="avatar" id="avatarBtn" type="button" aria-label="Account menu"><span data-account="initials">--</span></button>
+          <div class="account-menu" id="accountMenu">
+            <div class="account-menu-head">
+              <div class="account-menu-name" id="accountMenuName">Loading…</div>
+              <div class="account-menu-email" id="accountMenuEmail"></div>
+            </div>
+            <a class="account-menu-item" href="settings.html">Settings</a>
+            <button class="account-menu-item account-menu-logout" id="logoutBtn" type="button">Log Out</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="page">
+      <div class="page-header">
+        <h1 id="welcomeHeading">Welcome</h1>
+        <p id="welcomeSub"></p>
+      </div>
+
+      <div id="newAccountState" style="display:none;">
+        <a class="card empty-state-clickable" href="surveys.html">
+          <div class="empty-state">
+            <div class="icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+            </div>
+            <h3>Create a feedback form</h3>
+            <p>Build your first survey to start collecting responses.</p>
+          </div>
+        </a>
+      </div>
+
+      <div id="existingAccountState" style="display:none;">
+        <section class="card">
+          <div class="card-pad">
+            <div class="card-head">
+              <div>
+                <h2>Today's Analytics</h2>
+                <p id="todayCaption">—</p>
+              </div>
+              <a class="link-view-all" href="analytics.html">View Full Analytics</a>
+            </div>
+
+            <div class="stat-grid" style="margin-bottom:0;">
+              <div class="stat-card">
+                <div class="stat-label"><span>Responses Today</span></div>
+                <div class="stat-value" id="todayTotal">0</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label"><span>Average Rating Today</span></div>
+                <div class="stat-value" id="todayAvg">—</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-label"><span>5-Star Share Today</span></div>
+                <div class="stat-value" id="todayTop">—</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="card">
+          <div class="card-pad">
+            <div class="card-head">
+              <h2>Today's Feedback</h2>
+              <a class="link-view-all" href="feedback.html">View All Feedback</a>
+            </div>
+            <div class="comment-list" id="todayFeedbackList"></div>
+            <p id="todayFeedbackEmpty" style="display:none; color:var(--ink-500); font-size:13px; text-align:center; padding:20px 0;">No feedback yet today — check back later or share your survey link.</p>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script src="firebase-config.js"></script>
+<script src="script.js"></script>
+<script>
+  function fpTagHtml(tag) {
+    var cls = tag === 'Product Bug' ? 'tag-bug'
+      : tag === 'Feature Request' ? 'tag-feature'
+      : tag === 'General' ? 'tag-general'
+      : 'tag-new';
+    return '<span class="tag ' + cls + '">' + tag + '</span>';
+  }
+
+  function renderTodayFeedback(items) {
+    var listEl = document.getElementById('todayFeedbackList');
+    var emptyEl = document.getElementById('todayFeedbackEmpty');
+
+    if (!items.length) {
+      listEl.innerHTML = '';
+      emptyEl.style.display = 'block';
+      return;
+    }
+    emptyEl.style.display = 'none';
+
+    listEl.innerHTML = items.slice(0, 5).map(function (item) {
+      return (
+        '<div class="comment-row">' +
+          '<div class="comment-avatar">' + item.initials + '</div>' +
+          '<div class="comment-body">' +
+            '<div class="comment-top">' +
+              '<span class="comment-name">' + item.name + '</span>' +
+              fpTagHtml(item.tag) +
+            '</div>' +
+            '<div class="stars">' + fpStarsHtml(item.rating) + '</div>' +
+            '<p class="comment-text">' + item.text + '</p>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join('');
+  }
+
+  function renderTodayAnalytics(items) {
+    var total = items.length;
+    var avg = total ? items.reduce(function (s, it) { return s + (it.rating || 0); }, 0) / total : 0;
+    var fiveStar = items.filter(function (it) { return it.rating >= 5; }).length;
+
+    document.getElementById('todayTotal').textContent = total;
+    document.getElementById('todayAvg').textContent = total ? avg.toFixed(1) : '—';
+    document.getElementById('todayTop').textContent = total ? Math.round((fiveStar / total) * 100) + '%' : '—';
+
+    var todayLabel = new Date().toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+    document.getElementById('todayCaption').textContent = todayLabel;
+  }
+
+  fpRequireAuth(function (user, profile) {
+    var name = (profile.fullName || user.email || 'there').trim();
+    var firstName = name.split(/\s+/)[0];
+    document.getElementById('welcomeHeading').textContent = 'Welcome, ' + firstName;
+
+    fpListenFeedback(function (allFeedback) {
+      var hasAnyFeedback = allFeedback.length > 0;
+
+      document.getElementById('newAccountState').style.display = hasAnyFeedback ? 'none' : 'block';
+      document.getElementById('existingAccountState').style.display = hasAnyFeedback ? 'block' : 'none';
+      document.getElementById('welcomeSub').textContent = hasAnyFeedback
+        ? "Here's what came in today."
+        : '';
+
+      if (!hasAnyFeedback) return;
+
+      var todayItems = allFeedback.filter(fpIsToday);
+      renderTodayAnalytics(todayItems);
+      renderTodayFeedback(todayItems);
+    }, user.uid);
+  });
+</script>
+</body>
+</html>
